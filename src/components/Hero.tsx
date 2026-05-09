@@ -1,13 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Dictionary } from "@/app/[lang]/dictionaries";
 import { urlFor } from "@/sanity/lib/client";
-
-const defaultFoodBadges = [
-  { name: "Schnitzel", icon: "🍽️", metric: "⭐ 4.9", position: "left-[12%] top-[68%]" },
-  { name: "Kebab Bowl", icon: "🥗", metric: "❤️ 257", position: "left-[38%] top-[72%]" },
-  { name: "Greek Salad", icon: "🥬", metric: "⭐ 5.0", position: "right-[4%] top-[78%]" },
-];
 
 const badgePositions = [
   "left-[12%] top-[68%]",
@@ -16,26 +9,20 @@ const badgePositions = [
 ];
 
 type Props = {
-  dict: Dictionary["hero"];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data?: any;
+  data: any;
 };
 
-export default function Hero({ dict, data }: Props) {
-  const heading = data?.heading ?? dict.heading;
-  const description = data?.description ?? dict.description;
-  const ctaText = data?.ctaText ?? dict.cta;
-  const ctaLink = data?.ctaLink ?? "#book";
-  const heroImageSrc = data?.image
-    ? urlFor(data.image).width(800).height(600).url()
-    : "/hero.png";
+export default function Hero({ data }: Props) {
+  const { heading, description, ctaText, ctaLink, image } = data;
+  const heroImageSrc = urlFor(image).width(800).height(600).url();
 
-  const foodBadges = data?.foodBadges
-    ? data.foodBadges.map((b: { name: string; icon: string; metric: string }, i: number) => ({
-        ...b,
-        position: badgePositions[i] ?? badgePositions[0],
-      }))
-    : defaultFoodBadges;
+  const foodBadges = (data.foodBadges ?? []).map(
+    (b: { name: string; icon: string; metric: string }, i: number) => ({
+      ...b,
+      position: badgePositions[i] ?? badgePositions[0],
+    })
+  );
 
   return (
     <section className="mx-auto max-w-7xl px-5 py-6 lg:px-10 lg:py-10">

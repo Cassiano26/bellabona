@@ -69,7 +69,7 @@ export default async function DynamicPage({
       <Header lang={lang} dict={dict.header} />
       <main>
         {page.sections?.length ? (
-          <SectionRenderer sections={page.sections} dict={dict} />
+          <SectionRenderer sections={page.sections} />
         ) : (
           <section className="mx-auto max-w-4xl px-5 py-16 lg:px-10 lg:py-20">
             <h1 className="text-4xl font-bold text-gray-900">{page.title}</h1>

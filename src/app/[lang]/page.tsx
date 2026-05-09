@@ -54,7 +54,7 @@ export default async function Home({
     <>
       <Header lang={lang} dict={dict.header} />
       <main>
-        <SectionRenderer sections={page?.sections ?? []} dict={dict} />
+        <SectionRenderer sections={page?.sections ?? []} />
       </main>
       <Footer dict={dict.footer} />
     </>

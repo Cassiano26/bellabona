@@ -5,18 +5,7 @@
     "downloadMenu": "Download menu",
     "bookFreeTesting": "Book free testing"
   },
-  "hero": {
-    "heading": "Offer Lunch to\nBuild Culture &\nCut Costs",
-    "description": "30+ fresh, chef-made meals weekly, delivered straight to the office, employees order via app – all diets, no admin",
-    "cta": "Book a free team lunch"
-  },
-  "socialProof": {
-    "title": "Loved by +X00 customers"
-  },
-  "mealOptions": {
-    "heading": "30+ Meal Options Every Week.\nMade Fresh Daily. For Every Diet.",
-    "cta": "Download the menu now"
-  },
+
   "footer": {
     "followUs": "Follow us!",
     "followDescription": "Lorem ipsum Text Text Text Textextext",

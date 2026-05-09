@@ -1,27 +1,13 @@
 import Image from "next/image";
-import type { Dictionary } from "@/app/[lang]/dictionaries";
 import { urlFor } from "@/sanity/lib/client";
 
-const defaultStats = [
-  { value: "9/10", label: "Employee Satisfaction" },
-  { value: "30-40%", label: "More teams in the office" },
-  { value: "1.2 MM", label: "Meals delivered in Munich & Berlin" },
-];
-
-const defaultLogos = [
-  { src: "/logos/ifco.svg", alt: "IFCO", width: 80 },
-  { src: "/logos/atolls.svg", alt: "atolls", width: 90 },
-];
-
 type Props = {
-  dict: Dictionary["socialProof"];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data?: any;
+  data: any;
 };
 
-export default function SocialProof({ dict, data }: Props) {
-  const title = data?.title ?? dict.title;
-  const stats = data?.stats ?? defaultStats;
+export default function SocialProof({ data }: Props) {
+  const { title, logos, stats } = data;
 
   return (
     <section className="mx-auto max-w-7xl px-5 py-16 lg:px-10 lg:py-20">
@@ -30,32 +16,21 @@ export default function SocialProof({ dict, data }: Props) {
           {title}
         </p>
         <div className="flex items-center gap-6">
-          {data?.logos
-            ? data.logos.map((logo: { name: string; logo: { asset: unknown } }) => (
-                <Image
-                  key={logo.name}
-                  src={urlFor(logo.logo).width(160).url()}
-                  alt={logo.name}
-                  width={80}
-                  height={32}
-                  className="h-auto w-auto opacity-60 grayscale"
-                />
-              ))
-            : defaultLogos.map((logo) => (
-                <Image
-                  key={logo.alt}
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={logo.width}
-                  height={32}
-                  className="h-auto w-auto opacity-60 grayscale"
-                />
-              ))}
+          {(logos ?? []).map((logo: { name: string; logo: { asset: unknown } }) => (
+            <Image
+              key={logo.name}
+              src={urlFor(logo.logo).width(160).url()}
+              alt={logo.name}
+              width={80}
+              height={32}
+              className="h-auto w-auto opacity-60 grayscale"
+            />
+          ))}
         </div>
       </div>
 
       <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3 lg:mt-16">
-        {stats.map((stat: { value: string; label: string }) => (
+        {(stats ?? []).map((stat: { value: string; label: string }) => (
           <div
             key={stat.value}
             className="rounded-2xl bg-gray-100 px-6 py-8 lg:px-8 lg:py-10"
