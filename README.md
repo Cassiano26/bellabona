@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bellabona – Homepage
+
+A responsive homepage for Bellabona (office lunch delivery) built as a technical assessment.
+
+## Stack
+
+- **Next.js 16** (App Router, Turbopack)
+- **Sanity v3** (headless CMS, page builder pattern)
+- **Tailwind CSS v4**
+- **TypeScript**
+
+## Key Decisions
+
+### Rendering
+All page content is fetched server-side via Server Components. Pages are statically generated at build time (`generateStaticParams`) with Sanity data.
+
+### CMS – Page Builder
+Sanity is configured with a **page builder** pattern: editors create pages and compose them from reusable section blocks (Hero, Social Proof, Meal Options). Sections render in the order defined in the CMS. A `SectionRenderer` maps each block type to its React component.
+
+### i18n
+Internationalization uses a `[lang]` dynamic route segment with JSON dictionaries (`en.json`, `de.json`). A `proxy.ts` handles locale detection and redirection. The CMS stores translated content per-language via `@sanity/document-internationalization`, with slug uniqueness scoped per locale.
+
+### SEO
+Metadata is fully CMS-driven: global defaults from `siteSettings`, with per-page overrides. No hardcoded meta tags in the frontend. `generateMetadata` fetches SEO fields from Sanity at build time.
+
+### Project Structure
+
+```
+src/
+├── app/
+│   ├── [lang]/              # i18n route segment
+│   │   ├── [slug]/page.tsx  # Dynamic CMS pages
+│   │   ├── page.tsx         # Homepage (slug: "home")
+│   │   ├── layout.tsx       # Lang layout + dynamic metadata
+│   │   └── dictionaries/    # EN/DE translation files
+│   └── studio/              # Embedded Sanity Studio
+├── components/
+│   ├── SectionRenderer.tsx  # Maps CMS sections → components
+│   ├── Header.tsx
+│   ├── Hero.tsx
+│   ├── SocialProof.tsx
+│   ├── MealOptions.tsx
+│   └── Footer.tsx
+└── sanity/
+    ├── schemas/             # Page, sections, SEO, siteSettings
+    └── lib/                 # Client, queries, image helper
+```
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Frontend: [http://localhost:3000](http://localhost:3000)
+- Sanity Studio: [http://localhost:3000/studio](http://localhost:3000/studio)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+NEXT_PUBLIC_SANITY_PROJECT_ID=
+NEXT_PUBLIC_SANITY_DATASET=production
+SANITY_API_TOKEN=
+```

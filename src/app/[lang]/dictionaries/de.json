@@ -1,0 +1,40 @@
+{
+  "header": {
+    "dailyLunch": "Tägliches Mittagessen",
+    "more": "Mehr",
+    "downloadMenu": "Menü herunterladen",
+    "bookFreeTesting": "Kostenlos testen"
+  },
+  "hero": {
+    "heading": "Team stärken &\nBudget entlasten\n– mit smartem Lunch",
+    "description": "30+ tägliche Optionen, alle Ernährungsweisen, ins Büro geliefert – günstiger als auswärts essen.",
+    "cta": "Bestellung starten"
+  },
+  "socialProof": {
+    "title": "Geliebt von +X00 Kunden"
+  },
+  "mealOptions": {
+    "heading": "Jede Woche 30+ Gerichte.\nTäglich frisch. Für jede Ernährung.",
+    "cta": "Jetzt Menü herunterladen"
+  },
+  "footer": {
+    "followUs": "Folge uns!",
+    "followDescription": "Lorem ipsum Text Text Text Textextext",
+    "quickLinks": "Schnellzugriffe",
+    "discover": "Entdecken",
+    "ourPolicies": "Unsere Richtlinien",
+    "forEmployers": "Für Arbeitgeber",
+    "forEmployees": "Für Mitarbeiter",
+    "joinTeam": "Werde Teil des Bella&Bona-Teams!",
+    "aboutUs": "Über uns",
+    "caseStudies": "Fallstudien",
+    "blogs": "Blogs",
+    "ourMenu": "Unser Menü",
+    "businessCatering": "Geschäfts-Catering",
+    "dailyLunch": "Tägliches Mittagessen",
+    "termsOfUse": "Nutzungsbedingungen",
+    "dataPrivacy": "Datenschutz",
+    "cookies": "Cookies",
+    "copyright": "Bella&Bona Copyright © {year}. Mit Liebe gestaltet."
+  }
+}
