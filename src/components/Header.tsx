@@ -104,7 +104,7 @@ export default function Header({ lang, dict }: Props) {
 
         {/* Mobile hamburger */}
         <button
-          className="lg:hidden"
+          className="ml-auto lg:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
