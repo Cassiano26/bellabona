@@ -7,6 +7,8 @@ import Header from "@/components/Header";
 import SectionRenderer from "@/components/SectionRenderer";
 import Footer from "@/components/Footer";
 
+export const revalidate = 0;
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type SanityPage = { title: string; sections: any[]; seo?: any } | null;
 

@@ -7,6 +7,8 @@ import Header from "@/components/Header";
 import SectionRenderer from "@/components/SectionRenderer";
 import Footer from "@/components/Footer";
 
+export const revalidate = 0;
+
 export async function generateStaticParams() {
   return [{ lang: "en" }, { lang: "de" }];
 }
